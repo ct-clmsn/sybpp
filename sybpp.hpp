@@ -24,7 +24,7 @@
 
 namespace sybpp {
 
-// is_iteraable_trait
+// is_iterable_trait
 //
 template<typename T, typename=void>
 struct is_iterable : std::false_type {};
