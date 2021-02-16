@@ -152,7 +152,12 @@ struct everywhere {
                             // to make sure the variant is initialized at the variant_index
                             //
                             if(in.index() == variant_index) {
-                                //fn(std::get<variant_index>(in));
+                                // original implementation
+                                //
+                                // fn(std::get<variant_index>(in));
+                                //
+                                // using this implementation to get compile-time checking
+                                //
                                 fn(std::get<variant_index_type>(in));
                             }
                         }
