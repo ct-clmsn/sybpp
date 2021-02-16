@@ -8,7 +8,7 @@
 Project details [here](http://www.github.com/ct-clmsn/sybpp/).
 
 This project implements basic functionality from `Scrap Your Boilerplate: A Practical Design Pattern for Generic Programming`, Lammel, Peyton-Jones, 2003.
-Paper can be found [here](https://www.microsoft.com/en-us/research/wp-content/uploads/2003/01/hmap.pdf).
+The paper can be found [here](https://www.microsoft.com/en-us/research/wp-content/uploads/2003/01/hmap.pdf).
 
 ### License
 
