@@ -12,7 +12,7 @@ Paper can be found [here](https://www.microsoft.com/en-us/research/wp-content/up
 
 ### License
 
-Boost Software License
+Boost Software License 1.0
 
 ### Features
 
