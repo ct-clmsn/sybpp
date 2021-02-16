@@ -27,7 +27,7 @@ Boost Software License 1.0
 
 ### Special Thanks
 
-Hartmut Kaiser for suggesting this paper and an implementation of this paper.
+Hartmut Kaiser for suggesting this paper.
 
 ### Author
 
