@@ -8,7 +8,7 @@
 Project details [here](http://www.github.com/ct-clmsn/sybpp/).
 
 This project implements basic functionality from `Scrap Your Boilerplate: A Practical Design Pattern for Generic Programming`, Lammel, Peyton-Jones, 2003.
-[here](https://www.microsoft.com/en-us/research/wp-content/uploads/2003/01/hmap.pdf)
+Paper can be found [here](https://www.microsoft.com/en-us/research/wp-content/uploads/2003/01/hmap.pdf).
 
 ### License
 
@@ -32,5 +32,5 @@ Christopher Taylor
 
 ### Dependencies
 
-C++17
-Boost.Fusion
+* C++17
+* Boost.Fusion
