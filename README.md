@@ -21,6 +21,9 @@ Boost Software License 1.0
 * recursive traversal
 * queries
 * transform
+* functions, functors, std::bind, lambdas supported
+* STL container types
+* std::variant
 
 ### Special Thanks
 
