@@ -119,6 +119,20 @@ struct is_tuple_d : is_tuple< typename std::decay_t<T>::type > {};
 template<typename T>
 inline constexpr bool is_tuple_d_v = is_tuple<T>::value;
 
+// optional support
+//
+template<typename T>
+struct is_optional : std::false_type {};
+
+template<typename T>
+struct is_optional< std::optional<T> > : std::true_type {};
+
+template<typename T>
+struct is_optional_d : is_optional< typename std::decay_t<T>::type > {};
+
+template<typename T>
+inline constexpr bool is_optional_d_v = is_tuple<T>::value;
+
 // sybpp - everywhere
 //
 template<typename ToModify, typename ModifyFn>
@@ -217,6 +231,14 @@ struct everywhere {
                     });
                 }
 
+                // optional support
+                //
+                else if constexpr(is_optional<std::decay_t<decltype(in)>>::value) {
+                    if(in) {
+                        this_type fwdfn(fn);
+                        fwdfn(*in);
+                    }
+                }
                 // pair support
                 //
                 else if constexpr( is_pair<std::decay_t<decltype(in)>>::value) {
