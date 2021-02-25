@@ -15,6 +15,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <utility>
+#include <tuple>
 
 #include "sybpp.hpp"
 
@@ -63,6 +65,28 @@ BOOST_FUSION_ADAPT_STRUCT(
     (std::string, beer)
 )
 
+using pair_value_t = std::pair<int, int>;
+
+struct demo_pair {
+    pair_value_t value;
+};
+
+BOOST_FUSION_ADAPT_STRUCT(
+    demo_pair,
+    (pair_value_t, value)
+)
+
+using tuple_value_t = std::tuple<int, int>;
+
+struct demo_tuple {
+    tuple_value_t value;
+};
+
+BOOST_FUSION_ADAPT_STRUCT(
+    demo_tuple,
+    (tuple_value_t, value)
+)
+
 void update_demo(demo & d) {
     d.here += 1;
 }
@@ -96,6 +120,8 @@ int main(int argc, char ** argv) {
     demo_recurse f{ demo{1, "2"} };
     demo_vec g { {0,1,2}, "here" };
     demo_var h { 0, "here" };
+    demo_pair dpair;
+    demo_tuple dtuple;
 
     // update member variable of struct
     //
@@ -224,6 +250,28 @@ int main(int argc, char ** argv) {
         apply(dt, h);
 
         std::cout << "value should be 8\t" << ct.value << std::endl; 
+    }
+
+    {
+        count ct{};
+
+        auto fn = [&ct](int t) { ct(t); };
+        using mk_transform_demo = everywhere<int, decltype(fn)>;
+        mk_transform_demo dt(fn);
+
+	apply(dt, dpair);
+        std::cout << "value should be 2\t" << ct.value << std::endl; 
+    }
+
+    {
+        count ct{};
+
+        auto fn = [&ct](int t) { ct(t); };
+        using mk_transform_demo = everywhere<int, decltype(fn)>;
+        mk_transform_demo dt(fn);
+
+	apply(dt, dtuple);
+        std::cout << "value should be 2\t" << ct.value << std::endl; 
     }
 
     return 0;
