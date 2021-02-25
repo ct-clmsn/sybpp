@@ -1,3 +1,4 @@
+//  Copyright (c) 2021 Christopher Taylor
 //  Copyright (c) 2020 Christopher Taylor
 //
 //  SPDX-License-Identifier: BSL-1.0
