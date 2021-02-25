@@ -10,6 +10,10 @@ Project details [here](http://www.github.com/ct-clmsn/sybpp/).
 This project implements basic functionality from `Scrap Your Boilerplate: A Practical Design Pattern for Generic Programming`, Lammel, Peyton-Jones, 2003.
 The paper can be found [here](https://www.microsoft.com/en-us/research/wp-content/uploads/2003/01/hmap.pdf).
 
+`Scrap Your Boilerplate` creates generic traversals over data types. Users identify a target type and provide a function that accepts
+the identified type as an input parameter. `sybpp` computes, at compile-time, the generic traversal code. This removes the need for
+users to implement "boilerplate" data structure traversal code (a visitor pattern) in order apply a function.
+
 ### License
 
 Boost Software License 1.0
@@ -23,7 +27,7 @@ Boost Software License 1.0
 * transform
 * functions, functors, std::bind, lambdas supported
 * STL container types
-* std::variant
+* supports std::variant, std::tuple, std::pair
 
 ### Special Thanks
 
