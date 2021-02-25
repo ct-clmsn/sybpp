@@ -21,6 +21,8 @@
 #include <variant>
 #include <iterator>
 #include <optional>
+#include <utility>
+#include <tuple>
 
 namespace sybpp {
 
@@ -87,6 +89,34 @@ struct when_variant {
                std::variant_size_v<VariantType>-1>::value
     };
 };
+
+// pair support
+//
+template<typename T>
+struct is_pair : std::false_type {};
+
+template<typename T, typename F>
+struct is_pair< std::pair<T, F> > : std::true_type {};
+
+template<typename T>
+struct is_pair_d : is_pair< typename std::decay<T>::type > {};
+
+template<typename T>
+inline constexpr bool is_pair_d_v = is_pair_d<T>::value;
+
+// tuple support
+//
+template<typename T>
+struct is_tuple : std::false_type {};
+
+template<typename... T>
+struct is_tuple< std::tuple<T...> > : std::true_type {};
+
+template<typename T>
+struct is_tuple_d : is_tuple< typename std::decay_t<T>::type > {};
+
+template<typename T>
+inline constexpr bool is_tuple_d_v = is_tuple<T>::value;
 
 // sybpp - everywhere
 //
@@ -184,6 +214,23 @@ struct everywhere {
                         }
 
                     });
+                }
+
+                // pair support
+                //
+                else if constexpr( is_pair<std::decay_t<decltype(in)>>::value) {
+                    this_type fwdfn(fn);
+                    fwdfn(in.first);
+                    fwdfn(in.second);
+                }
+
+                // tuple support
+                //
+                else if constexpr(is_tuple< std::decay_t<decltype(in)>>::value) {
+                    this_type fwdfn(fn);
+                    // C++17 fold expression
+                    //
+                    std::apply([&fwdfn](auto&&... args) { (fwdfn(args), ... ); }, in);
                 }
                 
                 // compile-time check that InputType isn't an integral type
