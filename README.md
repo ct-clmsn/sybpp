@@ -33,7 +33,7 @@ Boost Software License 1.0
 * transform
 * functions, functors, std::bind, lambdas supported
 * STL container types
-* supports std::variant, std::tuple, std::pair
+* supports std::variant, std::tuple, std::pair, std::optional
 
 ### Special Thanks
 
