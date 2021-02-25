@@ -299,5 +299,16 @@ int main(int argc, char ** argv) {
         std::cout << "value should be 1\t" << ct.value << std::endl; 
     }
 
+    {
+        count ct{};
+
+        auto fn = [&ct](std::optional<int> t) { ct(*t); };
+        using mk_transform_demo = everywhere<std::optional<int>, decltype(fn)>;
+        mk_transform_demo dt(fn);
+
+	apply(dt, dopt);
+        std::cout << "value should be 1\t" << ct.value << std::endl; 
+    }
+
     return 0;
 }
