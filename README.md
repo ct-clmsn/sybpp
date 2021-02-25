@@ -14,6 +14,11 @@ The paper can be found [here](https://www.microsoft.com/en-us/research/wp-conten
 the identified type as an input parameter. `sybpp` computes, at compile-time, the generic traversal code. This removes the need for
 users to implement "boilerplate" data structure traversal code (a visitor pattern) in order apply a function.
 
+### Notes
+
+Users are required to wrap data types `sybpp` encounters with the `BOOST_FUSION_ADAPT_STRUCT` macro. Review the `demo.cpp` file for
+code examples.
+
 ### License
 
 Boost Software License 1.0
